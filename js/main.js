@@ -51,3 +51,7 @@ console.warn("HEY STUDENT: This program sends many debug messages to" +
   " seeing those helpful debug messages. In your browser console, click on" +
   " menu 'Default Levels' and add Verbose");
 $(start);
+
+//To-DO:
+//Refactor and clean up code
+//Find best spot to add event listeners after all DOM elements load for each nav click

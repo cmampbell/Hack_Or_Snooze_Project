@@ -61,6 +61,7 @@ function putStoriesOnPage() {
     }
 
     $allStoriesList.show();
+    $('.fa-star').show();
   }
 }
 
@@ -102,6 +103,7 @@ function putFavoritesOnPage() {
     }
 
     $allStoriesList.show();
+    $('.fa-star').show();
   }
 }
 
