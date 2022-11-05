@@ -133,7 +133,7 @@ async function favoriteStory(evt) {
   }
 }
 
-$allStoriesList.click(favoriteStory);
+
 
 
 

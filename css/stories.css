@@ -27,7 +27,7 @@
 }
 
 .story-link:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .story-author {
@@ -43,4 +43,18 @@ i {
 }
 .user-favorites {
   color: gold;
+}
+
+.remove-button {
+  font-size: .6rem;
+  background: none;
+  border: none;
+}
+
+.remove-button:hover {
+  background-color: red;
+  border: solid;
+  border-color: white;
+  color: white;
+  text-decoration: underline;
 }

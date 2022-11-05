@@ -10,6 +10,8 @@ async function getAndShowStoriesOnStart() {
   $storiesLoadingMsg.remove();
 
   putStoriesOnPage();
+  $('.fa-star').click(favoriteStory);
+  $('.remove-button').click(removeStoryFromPage);
 }
 
 /**
@@ -31,6 +33,7 @@ function generateStoryMarkup(story) {
         </a>
         <small class="story-hostname">(${hostName})</small>
         <small class="story-author">by ${story.author}</small>
+        <input type="button" class="remove-button hidden" value="Delete">
         <small class="story-user">posted by ${story.username}</small>
       </li>
     `);
@@ -52,6 +55,9 @@ function putStoriesOnPage() {
       if (story.storyId === favorite.storyId) {
         $story.children('.fa-star').addClass('user-favorites');
       };
+      if (story.username === currentUser.username){
+        $story.children('.remove-button').removeClass('hidden');
+      }
     }
 
     $allStoriesList.show();
@@ -102,6 +108,17 @@ function putFavoritesOnPage() {
 function removeStoryFromPage(evt){
   console.debug("removeStoryFromPage");
 
-  User.deleteStory()
+  const storyId = $(evt.target).parent().attr('id');
+
+  User.deleteStory(currentUser.loginToken, storyId);
+
+  $(evt.target).parent().remove();
 }
 
+
+
+
+//delete button only appears if currentUser added the story
+//user clicks delete button
+//User.deleteStory
+//get parent li, of event target, delete it
