@@ -6,6 +6,7 @@ let storyList;
 /** Get and show stories when site first loads. */
 
 async function getAndShowStoriesOnStart() {
+  console.debug('getAndShowStoriesOnStart');
   storyList = await StoryList.getStories();
   $storiesLoadingMsg.remove();
 
@@ -51,22 +52,25 @@ function putStoriesOnPage() {
     const $story = generateStoryMarkup(story);
     $allStoriesList.append($story);
 
-    for (let favorite of currentUser.favorites) {
-      if (story.storyId === favorite.storyId) {
-        $story.children('.fa-star').addClass('user-favorites');
-      };
-      if (story.username === currentUser.username){
-        $story.children('.remove-button').removeClass('hidden');
+    if (currentUser) {
+      $('.fa-star').show();
+      for (let favorite of currentUser.favorites) {
+        if (story.storyId === favorite.storyId) {
+          $story.children('.fa-star').addClass('user-favorites');
+        };
+        if (story.username === currentUser.username) {
+          $story.children('.remove-button').removeClass('hidden');
+        }
       }
     }
 
     $allStoriesList.show();
-    $('.fa-star').show();
   }
 }
 
 
-async function submitUserStory(evt) {
+async function submitNewStory(evt) {
+  console.debug('submitUserStory')
   evt.preventDefault();
 
   //get values from user input
@@ -82,10 +86,10 @@ async function submitUserStory(evt) {
   putStoriesOnPage();
 
   //hide the submit form
-  $submitForm.hide();
+  $newStoryForm.hide();
 }
 
-$submitForm.submit(submitUserStory);
+$newStoryForm.submit(submitNewStory);
 
 function putFavoritesOnPage() {
   console.debug("showFavoritesOnPage");
@@ -96,18 +100,20 @@ function putFavoritesOnPage() {
   for (let story of currentUser.favorites) {
     const $story = generateStoryMarkup(story);
     $allStoriesList.append($story);
+
     for (let favorite of currentUser.favorites) {
       if (story.storyId === favorite.storyId) {
         $story.children('.fa-star').addClass('user-favorites');
       };
     }
 
-    $allStoriesList.show();
     $('.fa-star').show();
+
+    $allStoriesList.show();
   }
 }
 
-function removeStoryFromPage(evt){
+function removeStoryFromPage(evt) {
   console.debug("removeStoryFromPage");
 
   const storyId = $(evt.target).parent().attr('id');

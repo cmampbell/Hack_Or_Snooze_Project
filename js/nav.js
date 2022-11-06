@@ -40,7 +40,7 @@ function updateNavOnLogin() {
 }
 
 function showNewStoryForm() { //is this necessary? could be an arrow function
-  console.debug("showSubmitForm");
+  console.debug("showNewStoryForm");
   $newStoryForm.show();
   putStoriesOnPage();
 }
@@ -48,8 +48,10 @@ function showNewStoryForm() { //is this necessary? could be an arrow function
 $submitLink.on("click", showNewStoryForm);
 
 function showFavoritesOnPage() {
-  putFavoritesOnPage();
+  console.debug('showFavoritesOnPage')
+  hidePageComponents();
   $newStoryForm.hide();
+  putFavoritesOnPage();
 }
 
-
+$favoritesLink.click(showFavoritesOnPage);

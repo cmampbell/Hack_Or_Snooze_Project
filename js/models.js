@@ -48,10 +48,16 @@ class StoryList {
    */
 
   static async getStories() {
+    console.debug('getStories')
     // Note presence of `static` keyword: this indicates that getStories is
     //  **not** an instance method. Rather, it is a method that is called on the
     //  class directly. Why doesn't it make sense for getStories to be an
     //  instance method?
+
+    // The stories are added to the story list in the constructor, we would have to
+    // instatiate a new StoryList, then call getStories on the new StoryList,
+    // and return it into a new StoryList instance. Since it's static we can call
+    // getStories and make a new instance of the class with the story list on one line
 
     // query the /stories endpoint (no auth required)
     const response = await axios({
@@ -74,6 +80,7 @@ class StoryList {
    */
 
   async addStory(user, newStory) {
+    console.debug('addStory');
     const response = await axios({ //make post request to API
       url: `${BASE_URL}/stories`,
       method: 'POST',
@@ -207,6 +214,7 @@ class User {
   }
 
   static async addToFavoriteStories(token, username, storyId) {
+    console.debug('addToFavoriteStories');
     //make post request to API to add story to users favorites
     try {
       const response = await axios({
@@ -223,6 +231,7 @@ class User {
   }
 
   static async removeFromFavoriteStories(token, username, storyId) {
+    console.debug('removeFromFavoriteStories');
     //make delete request to API to remove story from favorites
     try {
       const response = await axios({
@@ -239,6 +248,7 @@ class User {
   }
 
   static async deleteStory(token, storyId){
+    console.debug('deleteStory');
     try {
       const response = await axios({
         url: `${BASE_URL}/stories/${storyId}`,

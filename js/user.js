@@ -59,6 +59,7 @@ $signupForm.on("submit", signup);
 function logout(evt) {
   console.debug("logout", evt);
   localStorage.clear();
+  $('.fa-star').hide();
   location.reload();
 }
 
@@ -119,6 +120,7 @@ function updateUIOnUserLogin() {
 //on click of favorite button
 //function to favorite story
 async function favoriteStory(evt) {
+  console.debug('favoriteStory');
   if (currentUser) {
     const storyId = $(evt.target).parent().attr('id');
 

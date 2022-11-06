@@ -16,6 +16,7 @@ const $navUserProfile = $("#nav-user-profile");
 const $navLogOut = $("#nav-logout");
 
 const $submitLink = $('#submit-link');
+const $favoritesLink = $('#favorites-link');
 
 /** To make it easier for individual components to show just themselves, this
  * is a useful function that hides pretty much everything on the page. After
@@ -23,11 +24,12 @@ const $submitLink = $('#submit-link');
  */
 
 function hidePageComponents() {
-  console.debug(hidePageComponents);
+  console.debug('hidePageComponents');
   const components = [
     $allStoriesList,
     $loginForm,
     $signupForm,
+    $newStoryForm
   ];
   components.forEach(c => c.hide());
 }
@@ -56,3 +58,4 @@ $(start);
 //To-DO:
 //Refactor and clean up code
 //Find best spot to add event listeners after all DOM elements load for each nav click
+//On logout, favorite button still shows up
