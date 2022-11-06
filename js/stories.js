@@ -11,7 +11,6 @@ async function getAndShowStoriesOnStart() {
   $storiesLoadingMsg.remove();
 
   putStoriesOnPage();
-  $('.fa-star').click(favoriteStory);
   $('.remove-button').click(removeStoryFromPage);
 }
 

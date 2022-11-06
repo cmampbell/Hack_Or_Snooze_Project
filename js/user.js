@@ -135,6 +135,8 @@ async function favoriteStory(evt) {
   }
 }
 
+$body.on("click", ".fa-star", favoriteStory);
+
 
 
 
