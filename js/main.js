@@ -9,7 +9,7 @@ const $allStoriesList = $("#all-stories-list");
 
 const $loginForm = $("#login-form");
 const $signupForm = $("#signup-form");
-const $submitForm = $('#submit-form');
+const $newStoryForm = $('#new-story-form');
 
 const $navLogin = $("#nav-login");
 const $navUserProfile = $("#nav-user-profile");
@@ -23,6 +23,7 @@ const $submitLink = $('#submit-link');
  */
 
 function hidePageComponents() {
+  console.debug(hidePageComponents);
   const components = [
     $allStoriesList,
     $loginForm,

@@ -10,8 +10,7 @@ function navAllStories(evt) {
   console.debug("navAllStories", evt);
   hidePageComponents();
   putStoriesOnPage();
-  $submitForm.hide();
-  $('.fa-star').show();
+  $newStoryForm.hide();
 }
 
 $body.on("click", "#nav-all", navAllStories);
@@ -40,19 +39,17 @@ function updateNavOnLogin() {
   $navUserProfile.text(`${currentUser.username}`).show();
 }
 
-function showSubmitForm() { //is this necessary? could be an arrow function
+function showNewStoryForm() { //is this necessary? could be an arrow function
   console.debug("showSubmitForm");
-  $submitForm.show();
+  $newStoryForm.show();
   putStoriesOnPage();
-  $('.fa-star').show();
 }
 
-$submitLink.on("click", showSubmitForm);
+$submitLink.on("click", showNewStoryForm);
 
 function showFavoritesOnPage() {
   putFavoritesOnPage();
-  $submitForm.hide();
-  $('.fa-star').show();
+  $newStoryForm.hide();
 }
 
-$('#favorites-link').click(showFavoritesOnPage);
+
