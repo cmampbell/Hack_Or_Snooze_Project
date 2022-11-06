@@ -35,11 +35,13 @@ function updateNavOnLogin() {
   $navLogOut.show();
   $loginForm.hide();
   $signupForm.hide();
+  putStoriesOnPage();
   $('.fa-star').show();
+ 
   $navUserProfile.text(`${currentUser.username}`).show();
 }
 
-function showNewStoryForm() { //is this necessary? could be an arrow function
+function showNewStoryForm() {
   console.debug("showNewStoryForm");
   $newStoryForm.show();
   putStoriesOnPage();
@@ -49,9 +51,8 @@ $submitLink.on("click", showNewStoryForm);
 
 function showFavoritesOnPage() {
   console.debug('showFavoritesOnPage')
-  hidePageComponents();
   $newStoryForm.hide();
   putFavoritesOnPage();
 }
 
-$favoritesLink.click(showFavoritesOnPage);
+$favoritesLink.on("click", showFavoritesOnPage);

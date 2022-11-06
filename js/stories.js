@@ -95,8 +95,11 @@ function putFavoritesOnPage() {
 
   $allStoriesList.empty();
 
+  //takes currentUser favorites and turns them into an array of story objects
+  const stories = currentUser.favorites.map(story => new Story(story));
+
   // loop through users favorited stories and generate HTML for them
-  for (let story of currentUser.favorites) {
+  for (let story of stories) {
     const $story = generateStoryMarkup(story);
     $allStoriesList.append($story);
 
@@ -112,6 +115,8 @@ function putFavoritesOnPage() {
   }
 }
 
+//the problem is currentUser.favorites is not being updated with the user on the API
+
 function removeStoryFromPage(evt) {
   console.debug("removeStoryFromPage");
 
@@ -121,11 +126,3 @@ function removeStoryFromPage(evt) {
 
   $(evt.target).parent().remove();
 }
-
-
-
-
-//delete button only appears if currentUser added the story
-//user clicks delete button
-//User.deleteStory
-//get parent li, of event target, delete it

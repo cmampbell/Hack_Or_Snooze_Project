@@ -136,12 +136,3 @@ async function favoriteStory(evt) {
 }
 
 $body.on("click", ".fa-star", favoriteStory);
-
-
-
-
-
-//TODO:
-//click favorite button to add story to favorites - done
-//when we show all stories, if one is in users favorites, give the story 'favorite' class in HTML
-//CSS makes favorited stories gold or whatever - done

@@ -25,7 +25,8 @@ class Story {
 
   getHostName() {
     // UNIMPLEMENTED: complete this function!
-    return "hostname.com";
+    let hostName = (new URL(this.url));
+    return `${hostName.hostname}`;
   }
 }
 
@@ -109,13 +110,13 @@ class User {
    */
 
   constructor({
-                username,
-                name,
-                createdAt,
-                favorites = [],
-                ownStories = []
-              },
-              token) {
+    username,
+    name,
+    createdAt,
+    favorites = [],
+    ownStories = []
+  },
+    token) {
     this.username = username;
     this.name = name;
     this.createdAt = createdAt;
@@ -222,8 +223,9 @@ class User {
         method: "POST",
         params: { token },
       });
+      currentUser.favorites = response.data.user.favorites;
 
-    console.log(response);
+      console.log(response);
     } catch (err) {
       console.error("addToFavoriteStories failed", err);
       return null;
@@ -239,15 +241,16 @@ class User {
         method: "DELETE",
         params: { token },
       });
+      currentUser.favorites = response.data.user.favorites;
 
-    console.log(response);
+      console.log(response);
     } catch (err) {
       console.error("removeFromFavoriteStories failed", err);
       return null;
     }
   }
 
-  static async deleteStory(token, storyId){
+  static async deleteStory(token, storyId) {
     console.debug('deleteStory');
     try {
       const response = await axios({
@@ -256,7 +259,7 @@ class User {
         params: { token },
       });
 
-    console.log(response);
+      console.log(response);
     } catch (err) {
       console.error("deleteStory failed", err);
       return null;
